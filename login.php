@@ -14,7 +14,7 @@
 
             if(mysqli_num_rows($query) == 1){
             	$user = mysqli_fetch_array($query);
-            	$_SESSION['id'] 	= $user[0];
+            	$_SESSION['id'] 	      = $user[0];
             	$_SESSION['name'] 	= $user[1];
             	$_SESSION['email'] 	= $user[2];
 
