@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); $indexActive = true; ?>
 <html>
 <head>
     <title>Pizzaria</title>
@@ -17,49 +17,25 @@
                     }
                 });
             });
+
+            $('#logout').click(function(){
+                $.post('logout.php', {}, function(data){
+                    location.reload();
+                });
+            });
+
+            if($('#message').val()=='true'){
+                alert('Pedido confirmado com sucesso! No máximo em 30 minutos seu pedido estará chegando.');
+                location.href='index.php';
+            }
         });
     </script>
 </head>
 <body>
     <div class="container">
-        <div class='menu'>
-            <img class='logo' src="static/img/logo.png">
-            <div>
-                <div class="login">
-                <?php if(isset($_SESSION['name'])){ 
-                    echo "
-                    <table>
-                        <tr>
-                            <td>
-                                logged as: ".$_SESSION['name']."
-                            </td>
-                        </tr>
-                    </table>
-                    ";
-                }else { 
-                    echo "
-                    <table>
-                        <tr>
-                            <td><input type='text' name='email' id='email' placeholder='Email'></td>
-                        </tr>
+        
+        <?php include_once 'menu.tpl.php'; ?>
 
-                        <tr>
-                            <td><input type='password' name='password' id='password' placeholder='Password'></td>
-                        </tr>
-
-                        <tr>
-                            <td><button style='float:right;' id='try_login'>Entrar</button></td>
-                        </tr>
-                    </table>";
-                } ?> 
-                </div>
-                <ul>
-                    <a href="index.php"><li>Home</li></a>
-                    <a href="cardapio.php"><li>Cardápio</li></a>
-                    <a href="contato.php"><li>Contato</li></a>
-                </ul>
-            </div>
-        </div>
         <div class='corpo'>
             <div class='chamadas chamada-1'>
                 <p>Rodízio</p>
@@ -89,5 +65,10 @@
             </div>
         </div>
     </div>
+    <?php 
+        if(isset($_GET['pedido_confirmado'])){
+            echo "<input type='hidden' value='".$_GET['pedido_confirmado']."' id='message'>";
+        }
+    ?>
 </body>
 </html>
