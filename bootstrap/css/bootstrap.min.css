@@ -1,4 +1,16 @@
-/*!
+tr:hover {
+  background-color: black !important;
+}
+
+input {
+	color: black !important;
+}
+
+.copyright-bar-2.bg-orange {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}/*!
  * Bootstrap v3.3.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)

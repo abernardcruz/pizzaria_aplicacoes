@@ -95,18 +95,18 @@
             
     <?php include_once "header.tpl.php"; ?>
     <!-- Start Contact 2 -->
-	<section class="content-block contact-2">
+	<section class="content-block contact-2" style='background-color: rgba(255,255,255, 0.4) !important;   font-weight: bold;'>
 		<div class="container">
 			<div class="row">
 				
 				<div class="col-md-6 pull-right">
 					<div class="editContent">
-						<h2>How to find us</h2>
+						<h2>Como nos achar</h2>
 					</div>
 					<div class="editContent">
-						<p>We are easy to find in the heart of London's business district, just a short walk from several Tube Stations.</p>
+						<p style="font-size: 24px;">Nossa pizzaria está sempre pronta para lhe atender. Liguenos 21 1234-5678</p>
 					</div>
-					<img class="img-responsive map-img" src="http://placehold.it/600x300">
+					<img class="img-responsive map-img" src="images/banner2.jpg">
 				</div>
 				
 				<div class="col-md-6 pull-left">

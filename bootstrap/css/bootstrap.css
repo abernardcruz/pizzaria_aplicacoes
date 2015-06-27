@@ -6356,3 +6356,9 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+.copyright-bar-2.bg-orange {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

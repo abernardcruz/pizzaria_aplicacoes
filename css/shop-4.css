@@ -59,7 +59,7 @@ body:not(.device-touch):not(.device-xs):not(.device-xxs) .shop-1-4 .product-imag
 	font-weight: 600;
 	margin-bottom: 20px;
 	text-decoration: none;
-	color: #454545;
+	color: white;
 }
 
 .shop-1-4 .product-desc h4 del {
@@ -166,4 +166,12 @@ body:not(.device-touch):not(.device-xs):not(.device-xxs) .shop-1-4 .product-imag
 	
 	
 	
+}
+
+.table.table-hover {
+	color: white !important;
+}
+
+.table.table-hover select {
+	color: black !important;
 }

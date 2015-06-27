@@ -1042,3 +1042,16 @@ fieldset[disabled] .form-control {
 	
 	
 }
+
+.content-block-nopad,
+section {
+  width: 100%;
+  z-index: 100;
+  position: relative;
+  background-color: rgba(0,0,0, 0.5) !important;
+}
+
+body {
+	  background: url("../images/banner1.jpg") 0 0 no-repeat;
+	  background-size: 100%;
+}

@@ -100,82 +100,84 @@
     		<div class="row">
 
 				<div class="col-md-12">
-					<table class="table table-hover">
-						<tr>
-							<th>Pizza</th>
-							<th>Tamanho</th>
-							<th>Quantidade</th>
-							<th>Valor</th>
-						</tr>
+				<form action="gravar_pedido.php" method="POST">
+					
+				<table class="table table-hover">
+					<tr>
+						<th>Pizza</th>
+						<th>Tamanho</th>
+						<th>Quantidade</th>
+						<th>Valor</th>
+					</tr>
 
-						<?php
-	                        include "conexao_banco.php";
+					<?php
+                        include "conexao_banco.php";
 
-	                        $sql = "SELECT * FROM pizzas WHERE id in (".$_POST['pizzas_selected'].");";
-	                        $query = mysqli_query($conexao,$sql);
-	                        $n = mysqli_num_rows($query);
+                        $sql = "SELECT * FROM pizzas WHERE id in (".$_POST['pizzas_selected'].");";
+                        $query = mysqli_query($conexao,$sql);
+                        $n = mysqli_num_rows($query);
 
-	                        for($i=0;$i<$n;$i++){
-	                            echo "<tr>";
+                        for($i=0;$i<$n;$i++){
+                            echo "<tr>";
 
-	                            $pizzas = mysqli_fetch_row($query);
-	                            echo "
-	                            	<td><span>".$pizzas[1]."</span></td>
-	                            ";
+                            $pizzas = mysqli_fetch_row($query);
+                            echo " <td><input name='pizza".$i."' value='".$pizzas[1]."'></td>";
 
-	                            echo "
-	                                <td>
-	                                    <select id='combo_".$pizzas[0]."' class='combo_tamanho'>
-	                                        <option value='".$pizzas[4]."' selected='true'>Pequena</option>
-	                                        <option value='".$pizzas[5]."'>Media</option>
-	                                        <option value='".$pizzas[6]."'>Grande</option>
-	                                        <option value='".$pizzas[7]."'>Familia</option>
-	                                    </select>
-	                                </td>
-	                            ";
+                            echo "
+                                <td>
+                                    <select id='combo_".$pizzas[0]."' class='combo_tamanho' name='tamanho".$i."'>
+                                        <option value='".$pizzas[4]."' selected='true'>Pequena</option>
+                                        <option value='".$pizzas[5]."'>Media</option>
+                                        <option value='".$pizzas[6]."'>Grande</option>
+                                        <option value='".$pizzas[7]."'>Familia</option>
+                                    </select>
+                                </td>
+                            ";
 
-	                            echo "
-	                                <td>
-	                                    <select id='quantidade_".$pizzas[0]."' class='combo_quantidade'>
-	                                        <option value='1' selected='true'>1</option>
-	                                        <option value='2'>2</option>
-	                                        <option value='3'>3</option>
-	                                        <option value='4'>4</option>
-	                                    </select>
-	                                </td>
-	                            ";
+                            echo "
+                                <td>
+                                    <select id='quantidade_".$pizzas[0]."' class='combo_quantidade' name='quantidade".$i."'>
+                                        <option value='1' selected='true'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                    </select>
+                                </td>
+                            ";
 
-	                            echo "
-	                                <td><span id='pizza_".$pizzas[0]."'>".$pizzas[4]."</span></td>
-	                            ";
+                            echo "
+                                <td><input name='valor".$i."' id='pizza_".$pizzas[0]."' value='".$pizzas[4]."'></td>
+                            ";
 
-	                            echo "</tr>";
-	                        }
+                            echo "</tr>";
+                        }
 
-	                        mysqli_close($conexao);
-	                    ?>
+                        mysqli_close($conexao);
+                    ?>
 
-		                <tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td><span id='price-total'></span></td>
-						</tr>
-					</table>
+	                <tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><span id='price-total'></span></td>
+					</tr>
+				</table>
+
 				</div>
 				
 			</div><!-- /.row -->
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
-					<button class='btn btn-default pull-right' id='confirma-pedido'>Confirma Pedido</button>
+					<input class='btn btn-default pull-right' id='confirma-pedido' type='submit' value='Confirma Pedido'>
 				</div>
 			</div><!-- /.row -->
+			</form>
 							
     	</div><!-- /.container -->
 	</section>
     <!--// End Shop 1-4 --><!-- Start Copyright Bar 2 -->
         <?php include_once "footer.tpl.php"; ?>
-        <!--// End Copyright Bar 2 --></div><!-- /#page -->
+        <!--// End Copyright Barf 2 --></div><!-- /#page -->
 
 
     <!-- Scripts at the end... you know the score! -->
@@ -221,10 +223,6 @@
 		            location.reload();
 		        });
 	    	});
-	    	
-	    	$('#confirma-pedido').click(function(){
-                location.href = "index.php?pedido_confirmado=true"
-            });
 
             /*$('#confirma-pedido').click(function(){
 	    		var pizzas_to_delivery = [];
